@@ -30,7 +30,6 @@ export default function CountriesList() {
 
   return (
     <>
-      <LoadingMode loading={loading} error={error} />
       <div className="flex justify-between">
         <div>
           <label className="relative text-gray-400 dark:text-white focus-within:text-gray-600 block">
@@ -68,6 +67,7 @@ export default function CountriesList() {
           </select>
         </div>
       </div>
+      <LoadingMode loading={loading} error={error} />
       <div className="grid gap-20 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 xl:grid-cols-4">
         {allCountries?.map((country) => (
           <CountryCard country={country} />

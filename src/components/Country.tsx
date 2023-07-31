@@ -3,6 +3,7 @@ import { baseUrl, getBorders, getCurrencyName, getLanguages } from "../utils";
 import useFetch from "../hooks/useFetch";
 import LoadingMode from "./LoadingMode";
 import { Country as CountryType } from "../types";
+import { useMemo } from "react";
 
 export default function Country() {
   const [location] = useLocation();
@@ -30,7 +31,7 @@ export default function Country() {
     },
   ];
 
-  const borders = getBorders(result?.borders);
+  const borders = useMemo(() => getBorders(result?.borders), [result]);
 
   return (
     <>
@@ -40,48 +41,51 @@ export default function Country() {
             &larr; Back
           </button>
         </Link>
-        <div className="mt-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div>
-              <img
-                src={result?.flags.png}
-                alt={result?.flags.alt}
-                className="w-[90%] max-h-[23rem] object-cover"
-              />
-            </div>
-            <div className="my-auto dark:text-white text-black">
-              <p className="font-bold text-2xl mb-10">{result?.name.common}</p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
-                <div>
-                  {leftInfos.map((info) => (
-                    <CountryInfo key={info.id} name={info.key} value={info.value} />
-                  ))}
-                  <div className="flex dark:text-white text-black mt-1">
-                    <p className="font-semibold">Capital</p>: &nbsp;
-                    <p>{result?.capital}</p>
-                  </div>
-                </div>
-                <div className="mt-8 md:mt-0">
-                  {rightInfos.map((info) => (
-                    <CountryInfo key={info.id} name={info.key} value={info.value} />
-                  ))}
-                </div>
+        {!loading && (
+          <div className="mt-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div>
+                <img
+                  src={result?.flags.png}
+                  alt={result?.flags.alt}
+                  className="w-[90%] max-h-[23rem] object-cover"
+                  loading="eager"
+                />
               </div>
-              {borders.length ? (
-                <div className="flex gap-4 dark:text-white text-black mt-10 md:items-center flex-col md:flex-row items-start">
-                  <p className="font-semibold whitespace-nowrap self-start mt-2">
-                    Border countries: &nbsp;
-                  </p>
-                  <div className="flex gap-4 flex-wrap">
-                    {borders.map((border) => (
-                      <div className="shadow-md py-1 px-5 border border-1">{border}</div>
+              <div className="my-auto dark:text-white text-black">
+                <p className="font-bold text-2xl mb-10">{result?.name.common}</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
+                  <div>
+                    {leftInfos.map((info) => (
+                      <CountryInfo key={info.id} name={info.key} value={info.value} />
+                    ))}
+                    <div className="flex dark:text-white text-black mt-1">
+                      <p className="font-semibold">Capital</p>: &nbsp;
+                      <p>{result?.capital}</p>
+                    </div>
+                  </div>
+                  <div className="mt-8 md:mt-0">
+                    {rightInfos.map((info) => (
+                      <CountryInfo key={info.id} name={info.key} value={info.value} />
                     ))}
                   </div>
                 </div>
-              ) : null}
+                {borders.length ? (
+                  <div className="flex gap-4 dark:text-white text-black mt-10 md:items-center flex-col md:flex-row items-start">
+                    <p className="font-semibold whitespace-nowrap self-start mt-2">
+                      Border countries: &nbsp;
+                    </p>
+                    <div className="flex gap-4 flex-wrap">
+                      {borders.map((border) => (
+                        <div className="shadow-md py-1 px-5 border border-1">{border}</div>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
       <LoadingMode loading={loading} error={error} />
     </>
