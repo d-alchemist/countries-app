@@ -4,6 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  --border-color: #000 transparent #000 transparent;
+}
+
+html[class='dark'] {
+  --border-color: #fff transparent #fff transparent;
+}
+
 body {
   font-family: 'Nunito Sans', sans-serif;
   background-color: #fafafa;
@@ -26,7 +34,7 @@ body {
   margin: 8px;
   border-radius: 50%;
   border: 4px solid #fff;
-  border-color: #000 transparent #000 transparent;
+  border-color: var(--border-color);
   animation: lds-dual-ring 1.2s linear infinite;
 }
 @keyframes lds-dual-ring {
