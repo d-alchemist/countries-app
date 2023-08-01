@@ -35,7 +35,7 @@ export default function Country() {
 
   return (
     <>
-      <div>
+      <div className="px-7 md:px-16">
         <Link to="/">
           <button className="bg-white dark:bg-dark-blue py-2 px-10 shadow-md hover:shadow-lg dark:text-white dark:shadow-slate-800 rounded-lg">
             &larr; Back
@@ -48,7 +48,7 @@ export default function Country() {
                 <img
                   src={result?.flags.png}
                   alt={result?.flags.alt}
-                  className="w-[90%] max-h-[23rem] object-cover"
+                  className="w-[100%] md:w-[80%] max-h-[23rem] object-contain"
                   loading="eager"
                 />
               </div>
@@ -77,7 +77,7 @@ export default function Country() {
                     </p>
                     <div className="flex gap-4 flex-wrap">
                       {borders.map((border) => (
-                        <div className="shadow-md py-1 px-5 border border-1">{border}</div>
+                        <div className="shadow-md py-1 px-5 border border-1 dark:border-slate-800">{border}</div>
                       ))}
                     </div>
                   </div>

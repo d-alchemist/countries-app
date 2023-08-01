@@ -9,7 +9,7 @@ export default function CountryCard({ country }: { country: Country }) {
           src={country.flags.svg}
           alt={country.flags.alt}
           width={500}
-          className="max-h-40 min-h-fit object-fill"
+          className="max-h-40 min-h-fit object-fill min-w-full"
         />
         <div className="p-5 gap-5 mb-5">
           <p className="text-lg font-bold dark:text-white">{country.name.common}</p>

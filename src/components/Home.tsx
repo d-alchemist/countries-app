@@ -14,7 +14,7 @@ export default function Home({ children }: Props) {
         </h1>
         <ModeButton />
       </div>
-      <div className="px-7 md:px-16 py-10 bg-light-white dark:bg-dark-blue">
+      <div className="py-10 bg-light-white dark:bg-dark-blue">
         {children}
       </div>
     </div>
