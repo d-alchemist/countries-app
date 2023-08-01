@@ -48,7 +48,7 @@ export default function Country() {
                 <img
                   src={result?.flags.png}
                   alt={result?.flags.alt}
-                  className="w-[100%] md:w-[80%] max-h-[23rem] object-contain"
+                  className="w-[100%] md:w-[90%] max-h-[23rem] object-cover"
                   loading="eager"
                 />
               </div>
