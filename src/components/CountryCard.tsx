@@ -7,7 +7,7 @@ export default function CountryCard({ country }: { country: Country }) {
       <div className="shadow-md cursor-pointer">
         <img
           src={country.flags.svg}
-          alt={country.flags.alt}
+          alt={country.name.common}
           width={500}
           className="max-h-40 min-h-fit object-fill min-w-full"
         />

@@ -8,12 +8,12 @@ export default function ModeButton() {
     <button onClick={toggleMode}>
       {activeState === "dark" ? (
         <span className="flex items-center dark:text-white">
-          <img src={LightMoon} className="w-4 md:w-6" />
+          <img src={LightMoon} className="w-4 md:w-6" alt="light mode" />
           <span className="ml-3 text-sm md:text-base">Light Mode</span>
         </span>
       ) : (
         <span className="flex items-center dark:text-white">
-          <img src={DarkMoon} className="w-4 md:w-6" />
+          <img src={DarkMoon} className="w-4 md:w-6" alt="dark mode" />
           <span className="whitespace-pre ml-3 text-sm md:text-base">Dark Mode</span>
         </span>
       )}

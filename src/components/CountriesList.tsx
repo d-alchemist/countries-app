@@ -48,6 +48,7 @@ export default function CountriesList() {
               className="py-3 pr-5 rounded-md bg-white dark:bg-dark-blue placeholder-gray-400 text-gray-500 appearance-none block pl-14 shadow-md focus-within:outline-none focus:outline-gray-200 dark:focus:outline-gray-600 w-[100%] md:w-96"
               placeholder="Search for a country..."
               value={input}
+              role="form"
               onChange={(e) => setInput(e.target.value)}
             />
           </label>
@@ -57,6 +58,7 @@ export default function CountriesList() {
             className="py-2 px-7 bg-white dark:bg-dark-blue text-gray-500 dark:text-white shadow-md focus-within:outline-none"
             defaultValue="Filter by region"
             onChange={(e) => filterByRegion(e.target.value)}
+            aria-label="Filter region"
           >
             <option>Filter by region</option>
             <option value="/region/africa">Africa</option>
